@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Universal Selector Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif; /* You can choose the desired font */
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  body {
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  
+  input, button, textarea, select {
+    font: inherit;
+    border: none;
+    outline: none;
+  }

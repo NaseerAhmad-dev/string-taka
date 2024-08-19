@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <p>{{total}}</p>
+  <p class="assignment-title">{{title}}</p>
+    <input type="text" class="input"  [(ngModel)]="inputValue"  [ngClass]="{'focus': isFocused}" (focus)="isFocused = true" (blur)="isFocused = false">
+  <button class="add-button" (click)="onSubmit()"> Add</button>
+</div>
