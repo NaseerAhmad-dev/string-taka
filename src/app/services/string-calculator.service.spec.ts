@@ -9,6 +9,10 @@ describe('StringCalculatorService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(StringCalculatorService);
   });
+  //empty test should return 0
+  it('should return 0 for an empty string', () => {
+    expect(service.add('')).toBe(0);
+  });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
