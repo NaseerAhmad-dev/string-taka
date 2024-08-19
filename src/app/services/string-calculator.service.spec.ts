@@ -14,6 +14,12 @@ describe('StringCalculatorService', () => {
     expect(service.add('')).toBe(0);
   });
 
+  //should return the number itself when a single
+  it('should return the number itself when a single number is passed', () => {
+    expect(service.add('1')).toBe(1);
+  });
+  
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });

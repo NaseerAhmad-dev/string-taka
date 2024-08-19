@@ -8,6 +8,6 @@ export class StringCalculatorService {
   constructor() { }
 
   add(inputs:string):number{
-    return 0
+    return inputs ? parseInt(inputs, 10) : 0;
   }
 }
