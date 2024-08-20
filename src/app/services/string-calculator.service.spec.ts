@@ -22,6 +22,12 @@ describe('StringCalculatorService', () => {
   it('should return sum when two numbers are passed', () => {
     expect(service.add('1,4',)).toBe(5);
   });
+  
+  //should return the sum of multiple numbers in a string
+  it('should return the sum of multiple numbers in a string', () => {
+    expect(service.add('1,1,2,4,8')).toBe(16);
+  });
+  
 
 
 
