@@ -18,7 +18,12 @@ describe('StringCalculatorService', () => {
   it('should return the number itself when a single number is passed', () => {
     expect(service.add('1')).toBe(1);
   });
-  
+  //should return the number itself when a single
+  it('should return sum when two numbers are passed', () => {
+    expect(service.add('1,4',)).toBe(5);
+  });
+
+
 
   it('should be created', () => {
     expect(service).toBeTruthy();
