@@ -48,10 +48,11 @@ describe('StringCalculatorService', () => {
   });
 
   // should throw an exception when one negative number are passed
-  it('should throw an exception when negative numbers are passed', () => {
-    expect(() => service.add('1,-9')).toThrowError('negative numbers not allowed: -9');
+  it('should throw an exception when negative number are passed', () => {
+    expect(() => service.add('1,-2')).toThrowError('negative numbers not allowed: -2');
   });
-
+  
+ 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
