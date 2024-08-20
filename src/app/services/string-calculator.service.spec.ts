@@ -22,7 +22,7 @@ describe('StringCalculatorService', () => {
   it('should return sum when two numbers are passed', () => {
     expect(service.add('1,4',)).toBe(5);
   });
-  
+
   //should return the sum of multiple numbers in a string
   it('should return the sum of multiple numbers in a string', () => {
     expect(service.add('1,1,2,4,8')).toBe(16);
@@ -36,18 +36,21 @@ describe('StringCalculatorService', () => {
   it('should handle custom delimiters and return the sum of numbers', () => {
     expect(service.add('//;\n1;2')).toBe(3);
   });
-  
+
   //should handle multiple custom delimiters and return the sum of numbers
   it('should handle different custom delimiters', () => {
     expect(service.add('//|\n1|3|3')).toBe(7);
     expect(service.add('//#\n2#3#4')).toBe(9);
   });
-  
+
   it('should handle multiple numbers with default delimiters', () => {
     expect(service.add('1\n2,3')).toBe(6);
   });
-  
 
+  // should throw an exception when one negative number are passed
+  it('should throw an exception when negative numbers are passed', () => {
+    expect(() => service.add('1,-9')).toThrowError('negative numbers not allowed: -9');
+  });
 
   it('should be created', () => {
     expect(service).toBeTruthy();

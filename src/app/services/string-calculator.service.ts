@@ -9,22 +9,32 @@ export class StringCalculatorService {
 
   add(inputs: string): number {
     if (!inputs) {
-      return 0
-    }
-    let delimiters = /[,\n]+/; // Default delimiters: comma and newline
-    if (inputs.startsWith('//')) {
-      const delimiterSection = inputs.split('\n')[0]; // Get the first line for delimiters
-      const customDelimiter = delimiterSection.slice(2); // Remove the "//"
-      
-      // Create a regex pattern for the custom delimiter
-      delimiters = new RegExp(`[${customDelimiter.replace(/[\[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}\\n]+`);
-      inputs = inputs.slice(delimiterSection.length + 1); // Remove the delimiter section from input
+      return 0; // Return 0 for empty input
     }
   
-    // Split the input string using the defined delimiters
-    const numbers = inputs.split(delimiters).map(num => parseInt(num, 10));
+    let delimiter = /[\n,]+/; // Default delimiters: comma and newline
+    let numbers = inputs;
   
     
-    return numbers.reduce((sum, num) => sum + (isNaN(num) ? 0 : num), 0);
+    if (inputs.startsWith('//')) { // Check if there's a custom delimiter
+      const delimiterSection = inputs.split('\n')[0].substring(2); // Get the custom delimiter
+      delimiter = new RegExp(`[${delimiterSection.replace(/[\[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}\\n]+`);  // Create a regex that includes the custom delimiter
+      numbers = inputs.split('\n').slice(1).join('\n'); // Get the rest of the input after the delimiter
+    }
+  
+    // Split the numbers by the delimiter(s) and convert to numbers
+    const numbersArray = numbers.split(delimiter).map(num => parseInt(num, 10));
+  
+    // Check for negative numbers
+    const negativeNumbers = numbersArray.filter(num => num < 0);
+    if (negativeNumbers.length) { 
+      throw new Error(`negative numbers not allowed: ${negativeNumbers}`);
+    }
+  
+    // Sum the numbers in the array, ignoring NaN values
+    return numbersArray.reduce((sum, current) => sum + (isNaN(current) ? 0 : current), 0);
   }
+  
+  
+  
 }
