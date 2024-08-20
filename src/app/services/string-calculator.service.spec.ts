@@ -27,8 +27,26 @@ describe('StringCalculatorService', () => {
   it('should return the sum of multiple numbers in a string', () => {
     expect(service.add('1,1,2,4,8')).toBe(16);
   });
-  
+  //should handle new lines between numbers and return their sum
+  it('should handle new lines between numbers and return their sum', () => {
+    expect(service.add('9\n9,2')).toBe(20);
+  });
 
+  //should handle custom delimiters and return the sum of numbers
+  it('should handle custom delimiters and return the sum of numbers', () => {
+    expect(service.add('//;\n1;2')).toBe(3);
+  });
+  
+  //should handle multiple custom delimiters and return the sum of numbers
+  it('should handle different custom delimiters', () => {
+    expect(service.add('//|\n1|3|3')).toBe(7);
+    expect(service.add('//#\n2#3#4')).toBe(9);
+  });
+  
+  it('should handle multiple numbers with default delimiters', () => {
+    expect(service.add('1\n2,3')).toBe(6);
+  });
+  
 
 
   it('should be created', () => {
