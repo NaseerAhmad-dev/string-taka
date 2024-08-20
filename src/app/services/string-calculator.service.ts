@@ -18,7 +18,7 @@ export class StringCalculatorService {
     
     if (inputs.startsWith('//')) { // Check if there's a custom delimiter
       const delimiterSection = inputs.split('\n')[0].substring(2); // Get the custom delimiter
-      delimiter = new RegExp(`[${delimiterSection.replace(/[\[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}\\n]+`);  // Create a regex that includes the custom delimiter
+      delimiter = new RegExp(`[${delimiterSection.replace(/[\[\]{}()*+?.,\\^$|#\s]/g, '\\$&')}\\n]+`);    
       numbers = inputs.split('\n').slice(1).join('\n'); // Get the rest of the input after the delimiter
     }
   
@@ -27,8 +27,8 @@ export class StringCalculatorService {
   
     // Check for negative numbers
     const negativeNumbers = numbersArray.filter(num => num < 0);
-    if (negativeNumbers.length) { 
-      throw new Error(`negative numbers not allowed: ${negativeNumbers}`);
+    if (negativeNumbers.length > 0) {
+      throw new Error(`negative numbers not allowed: ${negativeNumbers.join(', ')}`); 
     }
   
     // Sum the numbers in the array, ignoring NaN values
