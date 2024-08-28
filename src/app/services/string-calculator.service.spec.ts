@@ -43,6 +43,10 @@ describe('StringCalculatorService', () => {
     expect(service.add('//#\n2#3#4')).toBe(9);
   });
 
+  it('should handle multiply numbers and return the multiply', () => {
+    expect(service.add('//a\n1a2a2')).toBe(4);
+  });
+
   it('should handle multiple numbers with default delimiters', () => {
     expect(service.add('1\n2,3')).toBe(6);
   });
